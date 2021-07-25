@@ -1,0 +1,91 @@
+body {
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+}
+
+.cardUpdate {
+    width: 600px;
+    padding: 20px;
+    border: none;
+    background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm31-jj-13-g-concrete_2.jpg?w=1300&dpr=1&fit=default&crop=default&q=80&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=c388574fc67c7381b0ea7deff09b864a");
+    background-size: cover;
+}
+
+.login_card {
+    width: 400px;
+    padding: 20px;
+    border: none
+}
+
+.account {
+    font-weight: 500;
+    font-size: 17px
+}
+
+.contact {
+    font-size: 20px
+}
+
+.form-control {
+    text-indent: 14px
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #4a148c;
+    outline: 0;
+    box-shadow: none
+}
+
+.inputbox {
+    margin-bottom: 10px;
+    position: relative
+}
+
+.inputbox i {
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    color: #dadada
+}
+
+.form-check-label {
+    font-size: 13px
+}
+
+.form-check-input {
+    width: 14px;
+    height: 15px;
+    margin-top: 5px
+}
+
+.forgot {
+    font-size: 14px;
+    text-decoration: none;
+    float: right;
+    color: #4A148C;
+}
+
+.mail {
+    color: #4a148c;
+    text-decoration: none
+}
+
+.form-check {
+    cursor: pointer
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #4A148C;
+    border-color: #4A148C
+}
+
+.jumbotron {
+    background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm31-jj-13-g-concrete_2.jpg?w=1300&dpr=1&fit=default&crop=default&q=80&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=c388574fc67c7381b0ea7deff09b864a");
+    background-size: cover;
+}

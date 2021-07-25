@@ -1,0 +1,74 @@
+<!--NAUDOJAMA BOOTSTRAP VERSION 4.6! -->
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>DoVision</title>
+  </script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron ">
+            {% if user.is_authenticated %}
+                <h6 class="display-4" style="float: right;">Hi {{ user.username }}!<a class="btn btn-secondary btn-sm" href="{% url 'logout' %}" title="Logout from your personalized TO DO list.">Log Out</a></h6>
+
+            <h1 class="display-4">Welcome to DoVision!</h1>
+            <p class="lead">A simple to do list app.</p>
+            <hr class="my-4">
+            <p>Add new TODO task by pressing ENTER or Submit button:</p>
+
+            <form method="POST" action="/">
+                {% csrf_token %}
+                {{ form.title }}
+                {{ form.due_date }}
+                <input class="btn btn-primary btn-sm" style="margin-bottom: 5px" type="submit" name="Add Task" title="Submit your TO DO task to the list." style="text-decoration:none">
+            </form>
+
+                <ol class="taskList" style="line-height: 80%">
+                    {% for task in tasks %}
+                        <div>
+                            <br>
+                            <li>
+                                <a class="btn btn-secondary btn-sm" href="{% url 'update_task' task.id %}" title="Update your TO DO task." style="text-decoration:none">Update</a>
+                                <a class="btn btn-secondary btn-sm" href="{% url 'delete' task.id %}" title="Delete your TO DO task." style="text-decoration:none">Delete</a>
+                                {% if task.prior == False %}
+                                <a class="btn btn-outline-danger btn-sm" href="{% url 'prior' task.id %}" title="Prioritize your TO DO task." style="text-decoration:none">Priority</a>
+                                {% endif %}
+
+                                {% if task.prior == True %}
+                                    <a class="btn btn-danger btn-sm" href="{% url 'prior' task.id %}" title="Prioritize your TO DO task." style="text-decoration:none">Deprioritize</a>
+                                {% endif %}
+
+                                {% if task.completed == False %}
+                                    <a class="btn btn-outline-success btn-sm" href="{% url 'completed' task.id %}" title="Mark your TO DO task as COMPLETED." style="text-decoration:none">Mark as Done</a>
+                                {% endif %}
+
+                                {% if task.completed == True %}
+                                    <a class="btn btn-success btn-sm" href="{% url 'completed' task.id %}" title="Mark your TO DO task as COMPLETED." style="text-decoration:none">Undone</a>
+                                        <strike>{{task}}</strike>
+
+                                <span><em>Completed on: {{ task.modified }}</em></span>
+                                {% else %}
+                                <span><strong>{{task}}</strong></span>
+
+                                <span><em>Created on: {{ task.created }}</em></span>
+                                    {% if task.due_date %}
+                                <span><em><strong>Due date: </strong>{{ task.due_date }}</em></span>
+                                    {% endif %}
+                                {% endif %}
+
+                            </li>
+                        </div>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <p>You are not logged in <a class="btn btn-primary btn-sm" href="{% url 'login' %}" title="Login to your TO DO list." style="text-decoration:none">Log In</a>&nbsp;or&nbsp;<a class="btn btn-primary btn-sm" href="{% url 'signup' %}" title="Signup to DoVision." style="text-decoration:none">Sign Up</a></p>
+            {% endif %}
+        </div>
+    </div>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="dovision" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Left" data-x_margin="18" data-y_margin="18"></script>
+</body>
+</html>
