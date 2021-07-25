@@ -1,0 +1,39 @@
+[tool.poetry.scripts]
+start = 'scripts.server:main'
+name = "doVision"
+version = "0.1.0"
+description = ""
+authors = [
+    "Aurimas <a.butvilauskas@gmail.com>",
+    "Jonas <satkusmedia@gmail.com>",
+]
+
+packages = [
+    { include="scripts", from="." },
+]
+
+
+[tool.poetry]
+name = "doVision"
+version = "0.1.0"
+description = ""
+authors = [""]
+packages = [
+    { include="scripts", from="." },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^3.1.5"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+django-stubs = "^1.7.0"
+pytest-django = "^4.1.0"
+pytest-cov = "^2.11.1"
+django-debug-toolbar = "^3.2"
+flake8 = "^3.8.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
